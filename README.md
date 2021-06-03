@@ -62,16 +62,19 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- It is easier to install easily by having automated configuration. Plus, automate configuration will be deployed efficiently without having troubleshooting issues. Lastly, it   
-saves time than maunally configured. 
+- It is easier to install easily by having automated configuration. Plus, automate configuration will be deployed efficiently without having troubleshooting issues. Lastly, it   saves time than maunally configured. 
 
 The playbook implements the following tasks:
-- Install 'install-elk.yml
-- Copy to Jump Box using the followign command
+- Install install-elk.yml
+- Copy to Jump Box using the following command
   - scp -i "Ohio_Key.pem" install-elk.yml ec2-user@ec2-18-189-170-152.us-east-2.compute.amazonaws.com:/home/ec2-user
-- Check status of Docker before uising command 
+- Check status of Docker before using command 
   - sudo service docker status -> To check the status either active or inactive 
-  - sudo service docker start -> To start docker   
+  - sudo service docker start -> To start docker: "sudo docker pull cyberxsecurity/ansible bash"
+- Open new window for SSH into Jump Box. This task will copy keys and install-elk.yml. 
+  1. sudo docker ps -> It shows the container id. 
+  2. sudo docker cp install-elk.yml <container id>:/root  
+  3. sudo docker cp Ohio_key.pem <container id>:/root 
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
