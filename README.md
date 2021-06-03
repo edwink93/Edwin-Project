@@ -109,5 +109,47 @@ The following shows the page of Kibana
 ![Alt text](https://github.com/edwink93/Edwin-Project/blob/main/Kibana1.PNG)
 
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
-
+### Bonus Steps of ELK Projects 
+  1. Create Linux EC2 instance 
+  - Jump Box (Linux)
+  - DVWA (Ubuntu)
+  - DVWA2 (Ubuntu)
+  - ELK (Ubuntu)
+  - RDP (Windows)
+  2. Activate the key and copy the public key into the ec2 instance 
+  chmod 400 Ohio_key.pem
+  scp -i "Ohio_Key.pem" Ohio_Key.pem ec2-user@ec2.us-east-2.compute.amazonaws.com:/home/ec2-user
+  3. Connect to ec2 instance by using SSH 
+  ssh -i "Ohio_Key.pem" ec2-user@ec2.us-east-2.compute.amazonaws.com
+  4. Install docker 
+  - Sudo yum install docker -y 
+  5. Create daemon.json file into the /etc/docker path 
+  - Sudo nano /etc/docker/daemon.json
+  6. Start docker service
+  - Sudo service docker start
+  7. check the docker status
+  - Sudo docker ps 
+  8. Pull ansible image 
+  - sudo docker pull cyberxsecurity/ansible bash
+  9. run ansible container 
+  - sudo docker run -ti cyberxsecurity/ansible bash
+  10. open new window and copy the key into ansible container 
+  - Sudo docker cp Ohio_key.pem :/root
+  11. Configure anisble container by looking anisble.cfg. 
+  12. SSH into ubuntu machines. 
+   - Sudo apt-get update
+   - Sudo apt-get upgrade
+  13. Copy the following files into ansible machines 
+   - install-elk.yml
+   - ansible_config.yml
+  14. Allow 5044, 5061, and 9200 to be open for ELK Server
+  15. Run ansible-playbook ansible-config.yml 
+  - ansible-playbook ansible_config.yml --key-file Ohio_Key.pem
+  16. Run ansible-playbook install-elk.yml 
+  ansible-playbook install-elk.yml --key-file Ohio_Key.pem
+  17. Download and edit filebeat.configuration.yml and change to filebeat.yml 
+  18. Download and edit metricbeat-configuration.yml and change to metricbeat.yml
+  19. Transfer both filebeat and metricbeat files into Jump box and then copy to the root.
+  20. Run the filebeat playbook 
+  21. To open the kibana and check the data. 
+  
