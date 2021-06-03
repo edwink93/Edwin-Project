@@ -106,7 +106,7 @@ The file is located in /etc/ansible/file/filebeat-configuration.yml
 - We need to use http://10.10.2.31:5601/ for navigating into the system to check that filebeat is working properly. 
   
 The following shows the page of Kibana 
-![Alt text](https://github.com/edwink93/Edwin-Project/blob/main/Kibana.PNG)
+![Alt text](https://github.com/edwink93/Edwin-Project/blob/main/Kibana1.PNG)
 
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
